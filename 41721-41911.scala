@@ -7,7 +7,9 @@ object Decimal {
   val third: Real = Stream.cons(3, third)
   val one: Real = Stream.cons(9, one)
 
-  //def fromDouble(d: Double): Real
+  // Não sei se tou a gerar bem porque o noise é estranho.
+  // TODO: remover primeiro digito
+  def fromDouble(d: Double): Real = Stream.cons(d.toInt, fromDouble((d-d.toInt)*10))
 
   //def fromFraction(num: Int, den: Int): Real
 
@@ -23,6 +25,7 @@ object Decimal {
   //-------------------------------------------------------
   //Só para testar
   def main(args: Array[String]) = {
-    third take 5 print
+    val x = fromDouble(0.1234)
+    x take 10 print
   }
 }
