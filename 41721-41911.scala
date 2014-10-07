@@ -5,6 +5,7 @@ object Decimal {
   val zero: Real = Stream.cons(0, zero)
   val quarter: Real = Stream.cons(2, Stream.cons(5, zero))
   val third: Real = Stream.cons(3, third)
+  val perte: Real = Stream.cons(1, Stream.cons(2, Stream.cons(3, perte)));
   val one: Real = Stream.cons(9, one)
 
   def fromDouble(d: Double): Real =
@@ -15,8 +16,9 @@ object Decimal {
 
   //def sum(a: Real, b: Real): Real
 
-  //val MAXPER = 1000
-  //def per(r: Real): Int
+  val MAXPER = 1000
+  def per(r: Real): Int = peraux(r, Stream.cons(r.head, Stream.empty))
+  def peraux(r: Real, aux: Real): Int = {1}
 
   def toDouble(r: Real): Double =
     if (r.isEmpty) 0 else r.head.toDouble/10+toDouble(r.tail.take(15))/10
@@ -36,15 +38,16 @@ object Decimal {
     //
 
     //d
-    //
+    val x = per(perte);
 
     //e
-    val a: Real = Stream.cons(1, Stream.cons(5, Stream.cons(3,zero)))
-    val x = toDouble(third)
+    //val a: Real = Stream.cons(1, Stream.cons(5, Stream.cons(3,zero)))
+    //val x = toDouble(third)
 
     //f
     //ints take 10 print
 
+    //Print tests
     //x take 10 print
     println(x)
 
