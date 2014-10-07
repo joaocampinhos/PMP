@@ -19,14 +19,14 @@ object Decimal {
   //val MAXPER = 1000
   //def per(r: Real): Int
 
-  def toDouble(r: Real): Double = r.head.toDouble/10+toDouble(r.tail)
+  def toDouble(r: Real): Double = r.head.toDouble/10+toDouble(r.take(15).tail)
 
   val ints: Real = Stream.from(1)
 
   //-------------------------------------------------------
   //Só para testar
   def main(args: Array[String]) = {
-    val x = toDouble(Stream.cons(1,Stream.cons(3,Stream.empty)))
+    val x = toDouble(Stream.cons(1,Stream.cons(3,zero)))
     //println(1/3)
     //println(((1%3)*10)/3)
     //x take 10 print
