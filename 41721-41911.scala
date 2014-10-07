@@ -9,10 +9,12 @@ object Decimal {
 
   // Não sei se tou a gerar bem porque o noise é estranho.
   // TODO: remover primeiro digito
-  def fromDouble(d: Double): Real = Stream.cons(d.toInt, fromDouble((d-d.toInt)*10))
+  def fromDouble(d: Double): Real =
+    Stream.cons((d*10).toInt, fromDouble((d*10-(d*10).toInt)))
 
   // TODO: remover primeiro digito
-  def fromFraction(num: Int, den: Int): Real = Stream.cons(num/den, fromFraction((num%den)*10, den))
+  def fromFraction(num: Int, den: Int): Real =
+    Stream.cons(num*10/den, fromFraction((num*10%den), den))
 
   //def sum(a: Real, b: Real): Real
 
@@ -26,10 +28,25 @@ object Decimal {
   //-------------------------------------------------------
   //Só para testar
   def main(args: Array[String]) = {
-    val x = toDouble(Stream.cons(1,Stream.cons(3,zero)))
-    //println(1/3)
-    //println(((1%3)*10)/3)
-    //x take 10 print
-    println(x);
+    //a
+    //val x = fromDouble(0.1234568)
+
+    //b
+    //val x = fromFraction(1,7)
+
+    //c
+    //
+
+    //d
+    //
+
+    //e
+    //val x = toDouble(Stream.cons(1,Stream.cons(3,zero)))
+
+    //f
+    //ints take 10 print
+
+    x take 10 print
+
   }
 }
