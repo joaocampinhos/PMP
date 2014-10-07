@@ -21,14 +21,15 @@ object Decimal {
 
   //def toDouble(r: Real): Double
 
-  //val ints: Real
+  val ints: Real = Stream.from(1)
 
   //-------------------------------------------------------
   //Só para testar
   def main(args: Array[String]) = {
-    val x = fromFraction(1,7)
+    //val x = fromFraction(4,5)
     //println(1/3)
     //println(((1%3)*10)/3)
-    x take 10 print
+    //x take 10 print
+    ints take 34 print
   }
 }
