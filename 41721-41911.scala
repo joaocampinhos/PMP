@@ -14,8 +14,14 @@ object Decimal {
 
   def fromFraction(num: Int, den: Int): Real =
     Stream.cons(num*10/den, fromFraction((num*10%den), den))
-    
-  def sum(a:Real, b:Real) = (a zip b) map {case (x,y) => x + y}
+
+  def sum(a:Real, b:Real) = (a zip b) map {
+    case (x,y) =>
+      if (x+y >= 10) {
+        (x+y)-10
+      }
+      else x+y
+  }
 
   val MAXPER = 1000
   def per(r: Real): Int = peraux(r.tail, Stream.cons(r.head, Stream.empty))
@@ -49,9 +55,10 @@ object Decimal {
     //val x = fromFraction(1,7)
 
     //c
-    //
+    val x = sum(ex1,ex1)
+
     //d
-    val x = per(perte)
+    //val x = per(perte)
 
     //e
     //val a: Real = Stream.cons(1, Stream.cons(5, Stream.cons(3,zero)))
@@ -61,8 +68,8 @@ object Decimal {
     //ints take 10 print
 
     //Print tests
-    //x take 10 print
-    println(x)
+    x take 10 print
+    //println(x)
 
   }
 }
