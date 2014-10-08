@@ -7,14 +7,15 @@ object Decimal {
   val third: Real = Stream.cons(3, third)
   val perte: Real = Stream.cons(1, Stream.cons(2, Stream.cons(3, perte)));
   val one: Real = Stream.cons(9, one)
+  val ex1: Real = 1 #:: 2 #:: 3 #:: 4 #:: 5 #:: 4 #:: 3 #:: 2 #:: 1 #:: Stream.empty
 
   def fromDouble(d: Double): Real =
     Stream.cons((d*10).toInt, fromDouble((d*10-(d*10).toInt)))
 
   def fromFraction(num: Int, den: Int): Real =
     Stream.cons(num*10/den, fromFraction((num*10%den), den))
-
-  //def sum(a: Real, b: Real): Real
+    
+  def sum(a:Real, b:Real) = (a zip b) map {case (x,y) => x + y}
 
   val MAXPER = 1000
   def per(r: Real): Int = peraux(r, Stream.cons(r.head, Stream.empty))
