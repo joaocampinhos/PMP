@@ -17,8 +17,21 @@ object Decimal {
   //def sum(a: Real, b: Real): Real
 
   val MAXPER = 1000
-  def per(r: Real): Int = peraux(r, Stream.cons(r.head, Stream.empty))
-  def peraux(r: Real, aux: Real): Int = {1}
+  def per(r: Real): Int = peraux(r.tail, Stream.cons(r.head, Stream.empty))
+  def peraux(r: Real, aux: Real): Int = {
+    if(aux.length > MAXPER) 0
+    else
+      if(cmp(r.take(aux.length),aux) == true) 1
+      else peraux(r.tail, aux.append(Stream.cons(r.head, Stream.empty)))
+  }
+
+  def cmp(a: Real, b: Real): Boolean =
+    (a, b) match {
+      case (x #:: xs, y #:: ys) =>
+        if (x == y) cmp(xs,ys)
+        else false
+      case _ => true
+    }
 
   def toDouble(r: Real): Double =
     if (r.isEmpty) 0 else r.head.toDouble/10+toDouble(r.tail.take(15))/10
@@ -36,9 +49,8 @@ object Decimal {
 
     //c
     //
-
     //d
-    val x = per(perte);
+    val x = per(perte)
 
     //e
     //val a: Real = Stream.cons(1, Stream.cons(5, Stream.cons(3,zero)))
